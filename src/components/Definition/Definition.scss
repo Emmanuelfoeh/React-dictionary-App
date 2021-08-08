@@ -1,0 +1,38 @@
+.define {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  //   background-color: hotpink;
+  height: 70vh;
+  overflow-y: scroll;
+  margin-top: 1rem;
+  overflow-x: hidden;
+}
+
+audio {
+  background-color: whitesmoke;
+  color: gray;
+  border-radius: 0.4rem;
+  width: 50%;
+}
+
+.subtitle {
+  margin: 1rem auto;
+  font-size: 2rem;
+  text-align: center;
+  //   color: red;
+  margin: 0.4rem auto;
+}
+
+.words {
+  background-color: rgb(54, 32, 43);
+  //   color: red;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px auto;
+  border-radius: 0.3rem;
+  padding: 0.4rem 0.5rem;
+  row-gap: 0.5rem;
+}

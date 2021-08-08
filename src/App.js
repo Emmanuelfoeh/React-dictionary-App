@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Container } from "@material-ui/core";
+import Header from "./components/header/Header";
+import Definition from "./components/Definition/Definition";
 
 function App() {
+  const [word, setWord] = useState("");
+  const [meaning, setMeaning] = useState([]);
+  const [category, setCategory] = useState("en");
+
+  const url = `https://api.dictionaryapi.dev/api/v2/entries/${category}/${word}`;
+
+  const dictionaryApi = async () => {
+    try {
+      const data = await axios.get(url);
+
+      setMeaning(data.data);
+      // console.log(meaning);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    dictionaryApi();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, word]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container className="container" maxWidth="md">
+        <Header
+          category={category}
+          setCategory={setCategory}
+          word={word}
+          setWord={setWord}
+        />
+        {meaning && (
+          <Definition word={word} category={category} meaning={meaning} />
+        )}
+      </Container>
     </div>
   );
 }
