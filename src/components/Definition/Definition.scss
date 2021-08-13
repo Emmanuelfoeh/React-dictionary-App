@@ -2,18 +2,24 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  //   background-color: hotpink;
+  // background-color: hotpink;
   height: 70vh;
   overflow-y: scroll;
   margin-top: 1rem;
   overflow-x: hidden;
+  position: relative;
 }
 
 audio {
-  background-color: whitesmoke;
-  color: gray;
+  background-color: transparent;
+  // color: gray;
   border-radius: 0.4rem;
-  width: 50%;
+  width: 150px;
+  margin-top: 10px;
+  position: fixed;
+  top: 18vh;
+  z-index: 10;
+  height: 30px;
 }
 
 .subtitle {
@@ -25,14 +31,16 @@ audio {
 }
 
 .words {
-  background-color: rgb(54, 32, 43);
+  // background-color: #282c34;
   //   color: red;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  margin: 10px auto;
+  // flex-wrap: wrap;
+  margin: 10px 0;
   border-radius: 0.3rem;
-  padding: 0.4rem 0.5rem;
+  padding: 0.3rem 0.4rem;
   row-gap: 0.5rem;
+  // word-break: break-all;
+  // height: 40vh;
 }

@@ -8,24 +8,36 @@ import React from "react";
 import "./header.scss";
 import categories from "../data/category";
 
-const Header = ({ category, setCategory, word, setWord }) => {
+const Header = ({ category, setCategory, word, LightMode, setWord }) => {
   const darkTheme = createTheme({
     palette: {
-      primary: { main: "#fff" },
-      type: "dark",
+      primary: {
+        main: LightMode ? "#000" : "#fff",
+      },
+      type: LightMode ? "light" : "dark",
     },
   });
 
   const languageChange = (language) => {
     setCategory(language);
-    // setWord("");
+    setWord("");
   };
 
   return (
-    <div className="header">
-      <span className="title"> {word ? word : "word hunt"}</span>
+    <div
+      className="header"
+      style={{
+        color: LightMode ? "#282c34" : "#fff",
+      }}
+    >
+      <span className="title"> {word ? word : "Dictionary"}</span>
       <div className="input-container">
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider
+          theme={darkTheme}
+          style={{
+            color: LightMode ? "#282c34" : "#fff",
+          }}
+        >
           <TextField
             label="Search a word"
             value={word}

@@ -1,9 +1,14 @@
 import React from "react";
 import "./Definition.scss";
 
-const Definition = ({ word, category, meaning }) => {
+const Definition = ({ word, category, LightMode, meaning }) => {
   return (
-    <div className="define">
+    <div
+      className="define"
+      style={{
+        color: LightMode ? "#282c34" : "#fff",
+      }}
+    >
       {meaning[0] && word && category === "en" && (
         <audio
           src={meaning[0].phonetics[0] && meaning[0].phonetics[0].audio}
@@ -21,9 +26,17 @@ const Definition = ({ word, category, meaning }) => {
             item.definitions.map((def) => {
               const { synonyms, definition, example } = def;
               return (
-                <div className="words">
+                <div
+                  className="words"
+                  style={{
+                    backgroundColor: LightMode ? "#282c34" : "#fff",
+                    color: LightMode ? "#fff" : "#282c34",
+                  }}
+                >
                   <span>
-                    <span style={{ color: "white" }}>Definition: </span>
+                    <span style={{ color: LightMode ? "yellow" : "blue" }}>
+                      Definition:{" "}
+                    </span>
                     <b> {definition}</b>
                   </span>
                   <hr style={{ color: "white", width: "100%" }} />
@@ -35,7 +48,7 @@ const Definition = ({ word, category, meaning }) => {
 
                   {synonyms && (
                     <span>
-                      <b>Synonyms:</b> {synonyms.map((s) => `${s},`)}
+                      <b>Synonyms:</b> {synonyms.map((s) => s + ", ")}
                     </span>
                   )}
                 </div>
